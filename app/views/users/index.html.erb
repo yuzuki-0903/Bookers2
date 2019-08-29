@@ -1,0 +1,29 @@
+
+ <% if @book.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @book.errors.count %>件のエラーが発生しました。</h2>
+      <ul>
+      <% @book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<%= render 'users/info', user: @user, book: @book %>
+<div class="col-sm-9">
+<table class="table table-striped">
+  <tr>
+    <th>image</th>
+    <th>name</th>
+    <th></th>
+  </tr>
+  <% @users.each do |user| %>
+  <tr>
+  <th><%= attachment_image_tag user, :profile_image,  fallback: "no_image.jpg", :width => "50px",:height =>"50px" %></th>
+ <th><%= user.name %></th>
+<th><%= link_to "show",user_path(user.id) %></th>
+</tr>
+<% end%>
+</table>
+</div>

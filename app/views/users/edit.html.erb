@@ -1,0 +1,23 @@
+<% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @user.errors.count %>件のerrorが発生しました。</h2>
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<%= form_for(@user) do |f| %>
+<h1>User info</h1>
+<h4>name</h4>
+    <%= f.text_field :name %>
+ <h4>image</h4>
+  <%= f.attachment_field :profile_image %>
+    <h4>Opinion</h4>
+    <%= f.text_area :introduction %>
+
+    <%= f.submit 'Create Book' %>
+<% end %>
+<h4>CopyRight Infratop.inc</h4>
